@@ -80,6 +80,13 @@ footer button{background:none;border:0;color:#9aa6af;text-decoration:underline;c
 .err{color:#b3202f;font-size:.9rem;min-height:1.3em}
 .toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,30px);background:var(--c1);color:#fff;padding:11px 22px;border-radius:4px;border:2px solid var(--c2);font-weight:700;z-index:200;opacity:0;transition:.3s;pointer-events:none}
 .toast.show{opacity:1;transform:translate(-50%,0)}
+#login{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at top,#3a5068,var(--c1) 70%)}
+.lcard{background:#fff;width:min(430px,100%);border-radius:6px;text-align:center;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.45)}
+.lbar{height:6px;background:var(--c2)}.lcard .in{padding:30px 28px 28px}
+.llogo{width:90px;height:90px;object-fit:contain;margin:0 auto 12px}
+.mono.big{width:76px;height:76px;margin:0 auto 12px;font:700 2rem var(--serif)}
+.lcard h1{font-size:1.9rem;color:var(--c1)}.lcard .sub{color:var(--mute);margin:6px 0 22px}
+.lcard .f{text-align:left}.lcard .btn{width:100%}.note{color:var(--mute);font-size:.85rem;margin-top:14px}
 @media(max-width:860px){.about .wrap{grid-template-columns:1fr;gap:34px}section{padding:60px 0}.hero .wrap{padding:80px 0 90px}
 #mb{display:block}nav{position:absolute;top:70px;left:0;right:0;background:var(--c1);flex-direction:column;align-items:flex-start;padding:18px 5%;display:none;border-bottom:2px solid var(--c2)}nav.open{display:flex}}
 @media(max-width:560px){.m{grid-template-columns:1fr}.m .ph{width:100%;height:240px}}
@@ -87,9 +94,21 @@ footer button{background:none;border:0;color:#9aa6af;text-decoration:underline;c
 </style>
 </head>
 <body>
+<div id="login" hidden><div class="lcard"><div class="lbar"></div><div class="in">
+  <img id="lLogo" class="llogo" alt="" hidden><span class="mono big" id="lMono"></span>
+  <h1 data-t="name"></h1><p class="sub" data-t="tagline"></p>
+  <form id="lf" novalidate>
+    <div class="f"><label for="uid">Gmail address</label><input id="uid" type="text" inputmode="email" autocomplete="username" autocapitalize="none" placeholder="yourname@gmail.com"></div>
+    <div class="f" id="pwBox" hidden><label for="pwd">Password</label><input id="pwd" type="password" autocomplete="current-password"></div>
+    <button class="btn" type="submit">Sign in</button>
+  </form>
+  <p class="err" id="err" role="alert"></p>
+  <p class="note">Need help? Call <span data-t="phone"></span></p>
+</div></div></div>
+<div id="app" hidden>
 <header><div class="wrap bar">
   <a class="brand" href="#top"><img id="logoImg" alt="" hidden><span class="mono" id="mono"></span><span data-t="name"></span></a>
-  <nav id="nav"><a href="#about">About us</a><a href="#services">Services</a><a href="#memorials">Memorials</a><a href="#contact">Contact</a></nav>
+  <nav id="nav"><a href="#about">About us</a><a href="#services">Services</a><a href="#memorials">Memorials</a><a href="#contact">Contact</a><button class="btn sm line" id="lo">Log out</button></nav>
   <button id="mb" aria-label="Menu" aria-expanded="false">&#9776;</button>
 </div></header>
 <div class="adm" id="adm" hidden><span>Owner tools:</span><button id="editSite">Edit website</button><button id="addMem">Add memorial</button><button id="addSvc">Add service</button><button id="seed" hidden>Add starter services</button><button id="out">Log out</button></div>
@@ -126,15 +145,11 @@ footer button{background:none;border:0;color:#9aa6af;text-decoration:underline;c
   </div>
 </div></section>
 </main>
-<footer><div class="wrap">&copy; <span id="yr"></span> <span data-t="name"></span>. <span data-t="footer"></span><button id="staff">Staff login</button></div></footer>
+<footer><div class="wrap">&copy; <span id="yr"></span> <span data-t="name"></span>. <span data-t="footer"></span></div></footer>
 
-<div class="modal" id="lg"><div class="box"><h3>Staff login</h3>
-  <div class="f"><label for="em">Email</label><input id="em" type="email" autocomplete="username"></div>
-  <div class="f"><label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password"></div>
-  <p class="err" id="err" role="alert"></p>
-  <div class="row"><button class="btn" id="go">Log in</button><button class="btn line" data-x style="color:var(--c1)">Cancel</button></div></div></div>
 <div class="modal" id="ap"><div class="box" id="apc"></div></div>
 <div class="modal" id="ie"><div class="box" id="iec"></div></div>
+</div>
 <div class="toast" id="toast" role="status"></div>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -212,28 +227,68 @@ function paint(){
       <div><h3>${esc(m.title)}</h3><div class="d">${esc(m.sub)}</div><p>${esc(m.text)}</p>
       <a class="btn sm" target="_blank" rel="noopener" href="https://wa.me/${T("whatsapp").replace(/\D/g, "")}?text=${encodeURIComponent("Condolences for the family of " + m.title)}">Send condolences</a>${tools("memorials", m.id)}</div></article>`).join("")
     || `<p class="empty">No memorials are listed at this time.</p>`;
-  $("adm").hidden = !admin; $("seed").hidden = !(admin && !S.svc.length);
+  $("lLogo").hidden = !S.img.logo; if (S.img.logo) $("lLogo").src = S.img.logo; $("lMono").hidden = !!S.img.logo; $("lMono").textContent = T("name").charAt(0); $("adm").hidden = !admin; $("seed").hidden = !(admin && !S.svc.length);
 }
 
 /* ---------- Live data ---------- */
 function start(){
-  if (!live){ paint(); return; }
+  if (!live){ paint(); gate(); return; }
   db.collection("site").doc("main").onSnapshot(d => { const v = d.exists ? d.data() : {}; S.t = v.t || {}; S.c = v.c || {}; paint(); });
   db.collection("site_images").onSnapshot(s => { S.img = {}; s.forEach(d => S.img[d.id] = d.data().data); paint(); });
   const list = (col, key) => db.collection(col).onSnapshot(s => { S[key] = s.docs.map(d => ({id:d.id, ...d.data()})).sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0)); paint(); });
   list("services", "svc"); list("memorials", "mem");
-  auth.onAuthStateChanged(u => { admin = !!u && !!OWNER && u.email.toLowerCase() === OWNER.toLowerCase(); paint(); });
+  auth.onAuthStateChanged(u => {
+    admin = !!u && !!OWNER && u.email.toLowerCase() === OWNER.toLowerCase();
+    if (session && session.role === "admin" && !admin) saveSession(null);
+    authReady = true; paint(); gate();
+  });
 }
 
-/* ---------- Login ---------- */
-const openLogin = () => { if (!live) return toast("Add your Firebase details first"); $("lg").classList.add("open"); $("em").focus(); };
-$("staff").onclick = openLogin;
-if (location.hash === "#admin") setTimeout(openLogin, 600);
-$("go").onclick = async () => {
-  try{ await auth.signInWithEmailAndPassword($("em").value.trim(), $("pw").value); $("lg").classList.remove("open"); $("pw").value = ""; $("err").textContent = ""; toast("Welcome back"); }
-  catch(e){ $("err").textContent = "Email or password is not correct."; }
+/* ---------- Login (same flow as Creative Design: Gmail for customers, ADMIN for the owner) ---------- */
+let session = null, authReady = !live;
+try{ session = JSON.parse(localStorage.getItem("pfh_session")); }catch(e){}
+const saveSession = v => { session = v; try{ localStorage.setItem("pfh_session", JSON.stringify(v)); }catch(e){} };
+const err = m => $("err").textContent = m || "";
+function gate(){
+  if (!authReady) return;
+  const on = !!session && (session.role !== "admin" || admin);
+  $("login").hidden = on; $("app").hidden = !on;
+  if (on) scrollTo(0, 0);
+}
+const authMsg = e => ({
+  "auth/invalid-credential":"Those details are not correct, or this owner was not added in Firebase Authentication.",
+  "auth/user-not-found":"This owner was not added in Firebase Authentication.",
+  "auth/wrong-password":"The password is not correct.",
+  "auth/invalid-email":"The owner email in index.html is not valid.",
+  "auth/operation-not-allowed":"Email/Password login is not turned on in Firebase Authentication.",
+  "auth/operation-not-supported-in-this-environment":"Open the site from a web address (http or https), not by double-clicking the file.",
+  "auth/invalid-api-key":"The apiKey in index.html is not correct. Copy it again from Firebase.",
+  "auth/api-key-not-valid":"The apiKey in index.html is not correct. Copy it again from Firebase.",
+  "auth/unauthorized-domain":"Add this website address under Authentication, Settings, Authorized domains.",
+  "auth/network-request-failed":"No connection. Check your internet and try again.",
+  "auth/too-many-requests":"Too many tries. Wait a few minutes and try again."
+}[e.code] || ("Login failed: " + (e.code || e.message)));
+$("uid").addEventListener("input", () => { $("pwBox").hidden = $("uid").value.trim().toUpperCase() !== "ADMIN"; err(); });
+$("lf").onsubmit = async e => {
+  e.preventDefault();
+  const v = $("uid").value.trim();
+  if (v.toUpperCase() === "ADMIN"){
+    if (!live) return err("Add your Firebase details to index.html first.");
+    try{ await auth.signInWithEmailAndPassword(OWNER, $("pwd").value); }
+    catch(x){ return err(authMsg(x)); }
+    admin = true; saveSession({role:"admin", email:OWNER}); paint(); gate(); return;
+  }
+  const m = v.toLowerCase();
+  if (!/^[a-z0-9._%+-]+@gmail\.com$/.test(m)) return err("Enter a valid Gmail address ending in @gmail.com.");
+  saveSession({role:"customer", email:m}); gate();
 };
-$("out").onclick = () => auth.signOut();
+function logout(){
+  if (auth) auth.signOut().catch(() => {});
+  saveSession(null); admin = false;
+  document.querySelectorAll(".modal.open").forEach(m => m.classList.remove("open"));
+  $("uid").value = ""; $("pwd").value = ""; $("pwBox").hidden = true; err(); paint(); gate();
+}
+$("out").onclick = $("lo").onclick = logout;
 
 /* ---------- Edit the whole website ---------- */
 $("editSite").onclick = () => {
