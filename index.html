@@ -3,41 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Paulino Funeral Home</title>
+<title>Paulino's Funeral Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--c1:#1f2a37;--c2:#a8884a;--bone:#f7f4ee;--ink:#242c33;--mute:#617078;--line:#e3ddd0;--serif:"Cormorant Garamond",Georgia,serif;--sans:"Karla",system-ui,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
 body{font:400 1.05rem/1.7 var(--sans);color:var(--ink);background:var(--bone);-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}[hidden]{display:none!important}
 :focus-visible{outline:3px solid var(--c2);outline-offset:3px}
-.wrap{width:min(1100px,90%);margin-inline:auto}
+.wrap{width:min(1180px,92%);margin-inline:auto}
 h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.1}
 .btn{display:inline-block;padding:12px 26px;border-radius:4px;background:var(--c2);color:#fff;border:2px solid var(--c2);font:700 1rem var(--sans);text-decoration:none;cursor:pointer;text-align:center}
 .btn:hover{filter:brightness(.92)}
 .btn.line{background:transparent;color:inherit;border-color:currentColor}
 .btn.sm{padding:7px 14px;font-size:.88rem}
+
+/* ----- top strip: phones + 24/7 ----- */
+.top{background:#10171f;color:#cfd6dc;font-size:.88rem;padding:7px 0}
+.top .wrap{display:flex;justify-content:center;align-items:center;gap:8px 22px;flex-wrap:wrap;text-align:center}
+.top a{color:#fff;text-decoration:none;font-weight:700}.top a:hover{color:var(--c2)}
+.top .ph{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 0}
+.top .ph span+span::before{content:"|";margin:0 11px;color:#55616b}
+.soc{display:inline-flex;gap:8px;align-items:center}.soc a{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--c2);display:grid;place-items:center;color:#fff}.soc a:hover{background:var(--c2);color:#fff}
+.live{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--c2)}
+.live i{width:9px;height:9px;border-radius:50%;background:#4fd37b;box-shadow:0 0 0 0 rgba(79,211,123,.7);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(79,211,123,0)}100%{box-shadow:0 0 0 0 rgba(79,211,123,0)}}
+
+/* ----- header (everything visible, wraps instead of cutting off) ----- */
 header{position:sticky;top:0;z-index:50;background:var(--c1);color:#fff;border-bottom:2px solid var(--c2)}
-.bar{display:flex;align-items:center;justify-content:space-between;height:70px;gap:14px}
-.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font:700 1.35rem var(--serif);min-width:0}
-.brand img{width:48px;height:48px;object-fit:contain;flex:none}
-.mono{width:44px;height:44px;border:2px solid var(--c2);border-radius:50%;display:grid;place-items:center;flex:none;color:var(--c2)}
-nav{display:flex;gap:24px;align-items:center}
-nav a{color:#e8ebee;text-decoration:none;font-weight:500;font-size:.95rem}nav a:hover{color:var(--c2)}
-#mb{display:none;background:none;border:0;color:#fff;font-size:1.8rem;cursor:pointer}
-.hero{background:var(--c1);color:#fff;position:relative;overflow:hidden}
-.hero .bg{position:absolute;inset:0;background:center/cover;opacity:.38}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--c1) 30%,transparent 100%)}
-.hero .wrap{position:relative;z-index:1;padding:120px 0 130px;max-width:1100px}
-.hero h1{font-size:clamp(2.5rem,6vw,4.6rem);max-width:15ch;margin-bottom:22px}
-.hero p{font-size:1.2rem;color:#d6dce1;max-width:50ch;margin-bottom:34px}
-.hero .tag{font:italic 500 1.25rem var(--serif);color:var(--c2);margin-bottom:16px}
+.bar{display:flex;align-items:center;justify-content:space-between;min-height:76px;padding:8px 0;gap:18px;width:min(1280px,94%)}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font:700 clamp(1.15rem,2.6vw,1.6rem)/1.1 var(--serif);white-space:normal}
+.brand img{width:52px;height:52px;object-fit:contain;flex:none}
+.mono{width:46px;height:46px;border:2px solid var(--c2);border-radius:50%;display:grid;place-items:center;flex:none;color:var(--c2)}
+nav{display:flex;gap:6px 22px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+nav a{color:#e8ebee;text-decoration:none;font-weight:500;font-size:.98rem;white-space:nowrap}nav a:hover{color:var(--c2)}
+nav .btn{white-space:nowrap}
+#mb{display:none;background:none;border:0;color:#fff;font-size:1.9rem;cursor:pointer;line-height:1;padding:4px 8px}
+
+/* ----- hero: slideshow over a live background ----- */
+.hero{background:linear-gradient(135deg,var(--c1),#0b1118);color:#fff;position:relative;overflow:hidden;isolation:isolate}
+.hero .bg{position:absolute;inset:-4%;background:center/cover;opacity:.4;z-index:0;animation:kb 26s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1) translate(0,0)}to{transform:scale(1.12) translate(-1.5%,-1%)}}
+.aura{position:absolute;inset:-25%;z-index:0;filter:blur(12px);animation:drift 20s ease-in-out infinite alternate;
+ background:radial-gradient(40% 40% at 20% 30%,color-mix(in srgb,var(--c2) 38%,transparent),transparent 70%),
+ radial-gradient(35% 35% at 80% 70%,rgba(90,130,180,.30),transparent 70%),
+ radial-gradient(30% 30% at 60% 15%,color-mix(in srgb,var(--c2) 22%,transparent),transparent 70%)}
+@keyframes drift{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(5%,3%) rotate(7deg)}100%{transform:translate(-4%,-3%) rotate(-5deg)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(11,17,24,.88) 18%,rgba(11,17,24,.35) 100%)}
+#fx{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.hw{position:relative;z-index:3;padding:96px 0 34px}
+.slides{display:grid}
+.slide{grid-area:1/1;opacity:0;visibility:hidden;transform:translateX(26px);transition:opacity .8s ease,transform .8s ease,visibility .8s}
+.slide.on{opacity:1;visibility:visible;transform:none}
+.slide .tag{font:italic 500 1.3rem var(--serif);color:var(--c2);margin-bottom:14px}
+.slide h1{font-size:clamp(2.3rem,5.4vw,4.4rem);max-width:19ch;margin-bottom:20px}
+.slide p.m{font-size:1.18rem;color:#d6dce1;max-width:52ch;margin-bottom:30px}
 .acts{display:flex;gap:12px;flex-wrap:wrap}
+.ctl{display:flex;align-items:center;gap:16px;margin-top:46px}
+.arr{width:44px;height:44px;border-radius:50%;border:2px solid var(--c2);background:rgba(11,17,24,.4);color:#fff;font-size:1.2rem;cursor:pointer;display:grid;place-items:center}
+.arr:hover{background:var(--c2)}
+.dots{display:flex;gap:9px;align-items:center}
+.dots button{width:11px;height:11px;border-radius:99px;border:0;background:rgba(255,255,255,.4);cursor:pointer;transition:width .3s,background .3s;padding:0}
+.dots button.on{width:34px;background:var(--c2)}
+
+/* ----- scrolling services ribbon ----- */
+.tick{background:var(--c2);color:#1b1608;overflow:hidden;white-space:nowrap;border-block:1px solid rgba(0,0,0,.15)}
+.tk{display:inline-flex;animation:mq 70s linear infinite}
+.tick:hover .tk{animation-play-state:paused}
+.tk span{padding:12px 0 12px 26px;font:700 .95rem var(--sans);letter-spacing:.04em}
+.tk span::after{content:"\25C6";margin-left:26px;opacity:.55;font-size:.7rem}
+@keyframes mq{to{transform:translateX(-50%)}}
+
 section{padding:90px 0}
-.head{max-width:620px;margin-bottom:44px}
+.head{max-width:680px;margin-bottom:44px}
 .head h2{font-size:clamp(2rem,4vw,3rem);color:var(--c1);margin-bottom:12px}
 .head p{color:var(--mute)}
 .about .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:center}
@@ -45,10 +86,10 @@ section{padding:90px 0}
 .about h2{font-size:clamp(2rem,3.6vw,2.8rem);color:var(--c1);margin-bottom:18px}
 .about p{color:#46545c;white-space:pre-line}
 #services{background:#fff;border-block:1px solid var(--line)}
-.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:34px}
-.s{border-left:3px solid var(--c2);padding:4px 0 4px 22px}
+.svc{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:20px}
+.s{background:var(--bone);border:1px solid var(--line);border-top:3px solid var(--c2);border-radius:4px;padding:22px 22px 20px}
 .s img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:4px;margin-bottom:14px}
-.s h3{font-size:1.6rem;color:var(--c1);margin-bottom:6px}.s p{color:var(--mute);white-space:pre-line}
+.s h3{font-size:1.5rem;color:var(--c1);margin-bottom:6px}.s p{color:var(--mute);white-space:pre-line;font-size:1rem;line-height:1.6}
 .mem{display:grid;gap:22px}
 .m{display:grid;grid-template-columns:150px 1fr;gap:26px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:22px;align-items:start}
 .m .ph{width:150px;height:180px;border-radius:2px;object-fit:cover;background:#ebe6da}
@@ -57,13 +98,16 @@ section{padding:90px 0}
 .m p{color:#46545c;white-space:pre-line;margin-bottom:14px}
 .tools{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
 .empty{color:var(--mute);font-style:italic}
-.cta{background:var(--c1);color:#fff;text-align:center}
+.cta{background:linear-gradient(135deg,var(--c1),#0b1118);color:#fff;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:-30%;background:radial-gradient(40% 40% at 25% 35%,color-mix(in srgb,var(--c2) 28%,transparent),transparent 70%),radial-gradient(35% 35% at 78% 70%,rgba(90,130,180,.22),transparent 70%);animation:drift 22s ease-in-out infinite alternate;filter:blur(12px)}
+.cta .wrap{position:relative}
 .cta h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:14px}
 .cta p{color:#d6dce1;max-width:52ch;margin:0 auto 28px;white-space:pre-line}
 .info{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:26px;margin-top:54px;text-align:left;border-top:1px solid rgba(255,255,255,.2);padding-top:34px}
 .info b{display:block;font:700 1.2rem var(--serif);color:var(--c2)}
-.info a{color:#fff}
+.info a{color:#fff;display:block}
 footer{background:#161e27;color:#9aa6af;text-align:center;padding:26px 0;font-size:.9rem}
+footer .soc{margin-bottom:12px}footer .soc a{color:#cfd6dc}
 footer button{background:none;border:0;color:#9aa6af;text-decoration:underline;cursor:pointer;font:inherit;margin-left:10px}
 .adm{background:#fff3cf;color:#3a2e08;padding:9px 12px;display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;font-weight:700;font-size:.92rem}
 .adm button{background:var(--c1);color:#fff;border:0;border-radius:4px;padding:7px 14px;font:700 .85rem var(--sans);cursor:pointer}
@@ -80,17 +124,23 @@ footer button{background:none;border:0;color:#9aa6af;text-decoration:underline;c
 .err{color:#b3202f;font-size:.9rem;min-height:1.3em}
 .toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,30px);background:var(--c1);color:#fff;padding:11px 22px;border-radius:4px;border:2px solid var(--c2);font-weight:700;z-index:200;opacity:0;transition:.3s;pointer-events:none}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-#login{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at top,#3a5068,var(--c1) 70%)}
+#login{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at top,#3a5068,var(--c1) 70%);background-size:140% 140%;animation:lg 14s ease-in-out infinite alternate}
+@keyframes lg{from{background-position:30% 0}to{background-position:70% 40%}}
 .lcard{background:#fff;width:min(430px,100%);border-radius:6px;text-align:center;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.45)}
 .lbar{height:6px;background:var(--c2)}.lcard .in{padding:30px 28px 28px}
 .llogo{width:90px;height:90px;object-fit:contain;margin:0 auto 12px}
 .mono.big{width:76px;height:76px;margin:0 auto 12px;font:700 2rem var(--serif)}
 .lcard h1{font-size:1.9rem;color:var(--c1)}.lcard .sub{color:var(--mute);margin:6px 0 22px}
 .lcard .f{text-align:left}.lcard .btn{width:100%}.note{color:var(--mute);font-size:.85rem;margin-top:14px}
-@media(max-width:860px){.about .wrap{grid-template-columns:1fr;gap:34px}section{padding:60px 0}.hero .wrap{padding:80px 0 90px}
-#mb{display:block}nav{position:absolute;top:70px;left:0;right:0;background:var(--c1);flex-direction:column;align-items:flex-start;padding:18px 5%;display:none;border-bottom:2px solid var(--c2)}nav.open{display:flex}}
-@media(max-width:560px){.m{grid-template-columns:1fr}.m .ph{width:100%;height:240px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+@media(max-width:1020px){
+ #mb{display:block}
+ nav{position:absolute;top:100%;left:0;right:0;background:var(--c1);flex-direction:column;align-items:flex-start;padding:18px 5%;display:none;border-bottom:2px solid var(--c2);gap:14px}
+ nav.open{display:flex}
+}
+@media(max-width:860px){.about .wrap{grid-template-columns:1fr;gap:34px}section{padding:60px 0}.hw{padding:64px 0 28px}.ctl{margin-top:34px}}
+@media(max-width:560px){.m{grid-template-columns:1fr}.m .ph{width:100%;height:240px}.top .ph span+span::before{margin:0 7px}}
+@media(prefers-reduced-motion:reduce){*,*::before{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
@@ -106,18 +156,47 @@ footer button{background:none;border:0;color:#9aa6af;text-decoration:underline;c
   <p class="note">Need help? Call <span data-t="phone"></span></p>
 </div></div></div>
 <div id="app" hidden>
+<div class="top"><div class="wrap">
+  <span class="live"><i></i>Available 24/7</span>
+  <span class="ph"><span><a data-l="tel" href="#" data-t="phone"></a></span><span><a data-l="tel2" href="#" data-t="phone2"></a></span><span><a data-l="tel3" href="#" data-t="phone3"></a></span></span>
+  <span class="soc"><a data-l="ig" target="_blank" rel="noopener" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a><a data-l="fb" target="_blank" rel="noopener" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M14 8.5V7c0-.7.2-1 1.1-1H17V3h-2.6C11.6 3 10 4.6 10 7.3v1.2H7.5V12H10v9h4v-9h2.6l.4-3.5z"/></svg></a></span>
+</div></div>
 <header><div class="wrap bar">
   <a class="brand" href="#top"><img id="logoImg" alt="" hidden><span class="mono" id="mono"></span><span data-t="name"></span></a>
   <nav id="nav"><a href="#about">About us</a><a href="#services">Services</a><a href="#memorials">Memorials</a><a href="#contact">Contact</a><button class="btn sm line" id="lo">Log out</button></nav>
   <button id="mb" aria-label="Menu" aria-expanded="false">&#9776;</button>
 </div></header>
-<div class="adm" id="adm" hidden><span>Owner tools:</span><button id="editSite">Edit website</button><button id="addMem">Add memorial</button><button id="addSvc">Add service</button><button id="seed" hidden>Add starter services</button><button id="out">Log out</button></div>
+<div class="adm" id="adm" hidden><span>Owner tools:</span><button id="editSite">Edit website</button><button id="addMem">Add memorial</button><button id="addSvc">Add service</button><button id="seed" hidden>Load full service list</button><button id="out">Log out</button></div>
 
 <main id="top">
-<div class="hero"><div class="bg" id="heroBg"></div><div class="wrap">
-  <p class="tag" data-t="tagline"></p><h1 data-t="heroTitle"></h1><p data-t="heroText"></p>
-  <div class="acts"><a class="btn" data-l="tel" href="#">Call us now</a><a class="btn line" data-l="wa" target="_blank" rel="noopener" href="#">Message on WhatsApp</a></div>
-</div></div>
+<div class="hero" id="hero">
+  <div class="bg" id="heroBg"></div><div class="aura"></div><canvas id="fx" aria-hidden="true"></canvas>
+  <div class="wrap hw">
+    <div class="slides" id="slides" aria-roledescription="carousel" aria-label="Highlights">
+      <div class="slide on">
+        <p class="tag" data-t="tagline"></p><h1 data-t="heroTitle"></h1><p class="m" data-t="heroText"></p>
+        <div class="acts"><a class="btn" data-l="tel" href="#">Call us now</a><a class="btn line" data-l="wa" target="_blank" rel="noopener" href="#">Message on WhatsApp</a></div>
+      </div>
+      <div class="slide">
+        <p class="tag">Complete funeral care</p><h1>Funeral arrangements, cremation and memorial services</h1>
+        <p class="m">Coffins and caskets, urns, tombing and tombstones. Everything is arranged under one roof, and pet cremation is available too.</p>
+        <div class="acts"><a class="btn" href="#services">See all services</a><a class="btn line" data-l="tel" href="#">Call us now</a></div>
+      </div>
+      <div class="slide">
+        <p class="tag">Dignified transportation</p><h1>Hearse, limousine, horse and carriage</h1>
+        <p class="m">We carry your loved one with the respect they deserve, and we arrange importation and repatriation when family is overseas.</p>
+        <div class="acts"><a class="btn" href="#services">See all services</a><a class="btn line" data-l="wa" target="_blank" rel="noopener" href="#">Message on WhatsApp</a></div>
+      </div>
+      <div class="slide">
+        <p class="tag">Remember every life</p><h1>Live streaming, memoirs and personalized memorabilia</h1>
+        <p class="m">Posters, portraits, programs, keepsakes, live music and fresh floral arrangements. Family far away can join the farewell by live stream.</p>
+        <div class="acts"><a class="btn" href="#memorials">View memorials</a><a class="btn line" data-l="tel" href="#">Call us now</a></div>
+      </div>
+    </div>
+    <div class="ctl"><button class="arr" id="prev" aria-label="Previous slide">&#8249;</button><div class="dots" id="dots"></div><button class="arr" id="next" aria-label="Next slide">&#8250;</button></div>
+  </div>
+</div>
+<div class="tick" aria-hidden="true"><div class="tk" id="tk"></div></div>
 
 <section class="about" id="about"><div class="wrap">
   <img id="aboutImg" alt="" hidden>
@@ -138,14 +217,15 @@ footer button{background:none;border:0;color:#9aa6af;text-decoration:underline;c
   <h2 data-t="ctaTitle"></h2><p data-t="ctaText"></p>
   <div class="acts" style="justify-content:center"><a class="btn" data-l="tel" href="#">Call <span data-t="phone"></span></a><a class="btn line" data-l="wa" target="_blank" rel="noopener" href="#">WhatsApp</a></div>
   <div class="info">
-    <div><b>Phone</b><a data-l="tel" href="#" data-t="phone"></a></div>
+    <div><b>Phone</b><a data-l="tel" href="#" data-t="phone"></a><a data-l="tel2" href="#" data-t="phone2"></a><a data-l="tel3" href="#" data-t="phone3"></a></div>
+    <div><b>Follow us</b><a data-l="fb" target="_blank" rel="noopener" href="#">Facebook</a><a data-l="ig" target="_blank" rel="noopener" href="#">Instagram</a></div>
     <div><b>Email</b><a data-l="mail" href="#" data-t="email"></a></div>
     <div><b>Visit us</b><span data-t="address"></span></div>
     <div><b>Hours</b><span data-t="hours"></span></div>
   </div>
 </div></section>
 </main>
-<footer><div class="wrap">&copy; <span id="yr"></span> <span data-t="name"></span>. <span data-t="footer"></span></div></footer>
+<footer><div class="wrap"><span class="soc"><a data-l="ig" target="_blank" rel="noopener" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a><a data-l="fb" target="_blank" rel="noopener" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M14 8.5V7c0-.7.2-1 1.1-1H17V3h-2.6C11.6 3 10 4.6 10 7.3v1.2H7.5V12H10v9h4v-9h2.6l.4-3.5z"/></svg></a></span><br>&copy; <span id="yr"></span> <span data-t="name"></span>. <span data-t="footer"></span></div></footer>
 
 <div class="modal" id="ap"><div class="box" id="apc"></div></div>
 <div class="modal" id="ie"><div class="box" id="iec"></div></div>
@@ -168,33 +248,55 @@ const OWNER = "kareem.zuniga92@gmail.com";   // the owner email you create in Fi
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const setH = (el, h) => { if (el._h !== h){ el._h = h; el.innerHTML = h; } };
 /* Every piece of text on the site. [key, label, default, big box?] */
 const F = [
-["name","Funeral home name","Paulino Funeral Home"],
+["name","Funeral home name","Paulino's Funeral Home"],
 ["tagline","Tagline","Honoring lives with dignity and compassion"],
 ["heroTitle","Main headline","We are here for your family, every step of the way"],
 ["heroText","Main message","Caring, respectful funeral services. Call us day or night and we will guide you through everything with patience and kindness.",1],
 ["aboutTitle","About heading","A family serving families"],
 ["aboutText","About text","For years, our family has stood beside yours in the hardest moments. We believe every life deserves to be honored with care, and every family deserves time, support and answers.\n\nTell us what matters to you and we will arrange a service that reflects the person you love.",1],
-["svcTitle","Services heading","Our services"],
-["svcText","Services intro","Whatever you decide, we handle the details so you can be with your family.",1],
+["svcTitle","Services heading","Services that we offer"],
+["svcText","Services intro","From funeral arrangements and cremation to transportation, keepsakes and live streaming, we handle every detail so you can be with your family.",1],
 ["memTitle","Memorials heading","In loving memory"],
 ["memText","Memorials intro","We remember those we have recently served. Please keep these families in your thoughts.",1],
 ["ctaTitle","Contact heading","We are available day and night"],
 ["ctaText","Contact message","Reach out any time. There is no pressure and no obligation. We will listen first.",1],
-["phone","Phone number","000-0000"],
-["whatsapp","WhatsApp number with country code (numbers only)","5010000000"],
+["phone","Phone number","610-4600"],
+["phone2","Second phone number","615-4384"],
+["phone3","Third phone number","630-3476"],
+["whatsapp","WhatsApp number with country code (numbers only)","5016104600"],
 ["email","Email","info@example.com"],
+["instagram","Instagram link","https://www.instagram.com/paulinosfuneralhomeltd"],
+["facebook","Facebook link","https://www.facebook.com/share/1Ep5f8MTgB/"],
 ["address","Address","Your street, Your town"],
 ["hours","Opening hours","Open 24 hours, 7 days a week"],
 ["footer","Footer message","With respect and compassion."]
 ];
 const DEF = Object.fromEntries(F.map(f => [f[0], f[2]]));
 const STARTER = [
- {title:"Funeral services", text:"Traditional or modern ceremonies planned around your wishes and your faith."},
+ {title:"Funeral Arrangements", text:"Complete planning of your loved one's service, handled with care from the first call to the final farewell."},
+ {title:"Variety of Coffins and Caskets", text:"A wide selection of coffins and caskets to suit every wish and every budget."},
  {title:"Cremation", text:"Respectful cremation with options for a memorial service or a private farewell."},
- {title:"Pre-planning", text:"Make your wishes known ahead of time and give your family peace of mind."},
- {title:"Transport and support", text:"Dignified transport, paperwork help and guidance for families near or far."}
+ {title:"Pet Cremation", text:"Gentle, dignified cremation for the pets who were part of your family."},
+ {title:"Urns", text:"A range of urns to keep and honor your loved one's ashes."},
+ {title:"Memorial Services", text:"Meaningful ceremonies that celebrate a life, held where your family chooses."},
+ {title:"Tombing", text:"Careful tomb construction and finishing to protect the final resting place."},
+ {title:"Tombstone Sales", text:"Headstones and tombstones in a variety of styles, engraved to your wishes."},
+ {title:"Fresh Floral Arrangements and Wreaths", text:"Fresh flowers and wreaths arranged beautifully for the service and the graveside."},
+ {title:"Pendants, Pins, Corsages and Booklets", text:"Pendants, pins, corsages, booklets, bracelets, fans, keychains and other keepsakes to remember them by."},
+ {title:"Tent and Chairs", text:"Tents and seating for the wake, service or gathering, set up for you."},
+ {title:"Memoirs: Live Streaming and Photos", text:"Live streaming and photo memoirs so family far away can be part of the day."},
+ {title:"Church and Graveside Decor", text:"Tasteful decoration for the church and the graveside."},
+ {title:"Importation and Repatriation", text:"Bringing your loved one home from abroad, or arranging their journey overseas, with the paperwork handled."},
+ {title:"Funeral Transportation", text:"Hearse, limousine, or horse and carriage, driven with dignity."},
+ {title:"Morgue Fee", text:"Morgue care arranged when the family requests it."},
+ {title:"Posters and Portraits", text:"Memorial posters and portraits designed with your chosen photos."},
+ {title:"Death Announcement", text:"Announcements on Facebook, local TV and radio so the community can pay respects."},
+ {title:"Live Music", text:"Live music to set the tone, from hymns to your loved one's favorite songs."},
+ {title:"Limousine Rental", text:"Elegant limousines available for the family and guests."},
+ {title:"Personalized Memorabilia", text:"Custom keepsakes and programs made to reflect the life being honored."}
 ];
 const S = {t:{}, img:{}, c:{}, svc:[], mem:[]};
 const T = k => (S.t[k] ?? DEF[k]);
@@ -210,24 +312,29 @@ function paint(){
   document.documentElement.style.setProperty("--c2", S.c.c2 || "#a8884a");
   document.title = T("name");
   document.querySelectorAll("[data-t]").forEach(e => e.textContent = T(e.dataset.t));
-  const ph = T("phone").replace(/[^\d+]/g, "");
+  const num = k => T(k).replace(/[^\d+]/g, "");
+  const wa = T("whatsapp").replace(/\D/g, "");
   document.querySelectorAll("[data-l]").forEach(a => {
     const k = a.dataset.l;
-    a.href = k === "tel" ? "tel:" + ph : k === "mail" ? "mailto:" + T("email") : "https://wa.me/" + T("whatsapp").replace(/\D/g, "") + "?text=" + encodeURIComponent("Hello, I need assistance from " + T("name") + ".");
+    a.href = k === "tel" ? "tel:" + num("phone") : k === "tel2" ? "tel:" + num("phone2") : k === "tel3" ? "tel:" + num("phone3") : k === "mail" ? "mailto:" + T("email") : k === "ig" ? T("instagram") : k === "fb" ? T("facebook") : "https://wa.me/" + wa + "?text=" + encodeURIComponent("Hello, I need assistance from " + T("name") + ".");
   });
   const L = S.img.logo; $("logoImg").hidden = !L; $("mono").hidden = !!L; if (L) $("logoImg").src = L; $("mono").textContent = T("name").charAt(0);
   $("heroBg").style.backgroundImage = S.img.hero ? `url(${S.img.hero})` : "none";
   $("aboutImg").hidden = !S.img.about; if (S.img.about) $("aboutImg").src = S.img.about;
   const tools = (c, id) => admin ? `<div class="tools"><button class="btn sm line" style="color:var(--c1)" data-ed="${c}:${id}">Edit</button><button class="btn sm line" style="color:#b3202f" data-del="${c}:${id}">Delete</button></div>` : "";
   const real = S.svc.length > 0;
-  $("svcList").innerHTML = (real ? S.svc : STARTER.map((s, i) => ({...s, id:"d" + i}))).map(s =>
-    `<div class="s">${s.img ? `<img src="${s.img}" alt="${esc(s.title)}">` : ""}<h3>${esc(s.title)}</h3><p>${esc(s.text)}</p>${real ? tools("services", s.id) : ""}</div>`).join("");
-  $("memList").innerHTML = S.mem.map(m =>
+  const list = real ? S.svc : STARTER.map((s, i) => ({...s, id:"d" + i}));
+  setH($("svcList"), list.map(s =>
+    `<div class="s">${s.img ? `<img src="${s.img}" alt="${esc(s.title)}">` : ""}<h3>${esc(s.title)}</h3><p>${esc(s.text)}</p>${real ? tools("services", s.id) : ""}</div>`).join(""));
+  /* scrolling ribbon of service names */
+  let names = list.map(s => esc(s.title)); const base = names.slice(); while (names.length && names.length < 20) names = names.concat(base);
+  setH($("tk"), [...names, ...names].map(n => `<span>${n}</span>`).join(""));
+  setH($("memList"), S.mem.map(m =>
     `<article class="m">${m.img ? `<img class="ph" src="${m.img}" alt="${esc(m.title)}">` : `<div class="ph"></div>`}
       <div><h3>${esc(m.title)}</h3><div class="d">${esc(m.sub)}</div><p>${esc(m.text)}</p>
-      <a class="btn sm" target="_blank" rel="noopener" href="https://wa.me/${T("whatsapp").replace(/\D/g, "")}?text=${encodeURIComponent("Condolences for the family of " + m.title)}">Send condolences</a>${tools("memorials", m.id)}</div></article>`).join("")
-    || `<p class="empty">No memorials are listed at this time.</p>`;
-  $("lLogo").hidden = !S.img.logo; if (S.img.logo) $("lLogo").src = S.img.logo; $("lMono").hidden = !!S.img.logo; $("lMono").textContent = T("name").charAt(0); $("adm").hidden = !admin; $("seed").hidden = !(admin && !S.svc.length);
+      <a class="btn sm" target="_blank" rel="noopener" href="https://wa.me/${wa}?text=${encodeURIComponent("Condolences for the family of " + m.title)}">Send condolences</a>${tools("memorials", m.id)}</div></article>`).join("")
+    || `<p class="empty">No memorials are listed at this time.</p>`);
+  $("lLogo").hidden = !S.img.logo; if (S.img.logo) $("lLogo").src = S.img.logo; $("lMono").hidden = !!S.img.logo; $("lMono").textContent = T("name").charAt(0); $("adm").hidden = !admin; $("seed").hidden = !admin;
 }
 
 /* ---------- Live data ---------- */
@@ -294,7 +401,7 @@ $("out").onclick = $("lo").onclick = logout;
 $("editSite").onclick = () => {
   const im = (k, lbl) => `<div class="f"><label for="im_${k}">${lbl}</label>${S.img[k] ? `<img src="${S.img[k]}" alt="">` : ""}<input id="im_${k}" type="file" accept="image/*" data-img="${k}"></div>`;
   $("apc").innerHTML = `<h3>Edit website</h3><p style="color:var(--mute)">Changes go live for everyone when you press Save.</p>
-    <h4>Pictures (saved as soon as you choose them)</h4>${im("logo", "Logo")}${im("hero", "Top banner photo")}${im("about", "About us photo")}
+    <h4>Pictures (saved as soon as you choose them)</h4>${im("logo", "Logo")}${im("hero", "Top banner photo (moves slowly behind the slides)")}${im("about", "About us photo")}
     <h4>Colors</h4><div class="f"><label for="c1">Main color (header, headings)</label><input id="c1" type="color" value="${S.c.c1 || "#1f2a37"}"></div>
     <div class="f"><label for="c2">Accent color (buttons, details)</label><input id="c2" type="color" value="${S.c.c2 || "#a8884a"}"></div>
     <h4>Words</h4>${F.map(f => `<div class="f"><label for="f_${f[0]}">${f[1]}</label>${f[3] ? `<textarea id="f_${f[0]}">${esc(T(f[0]))}</textarea>` : `<input id="f_${f[0]}" value="${esc(T(f[0]))}">`}</div>`).join("")}
@@ -350,15 +457,69 @@ document.addEventListener("click", async e => {
   if (e.target.matches("[data-x]")) e.target.closest(".modal").classList.remove("open");
   if (e.target.classList.contains("modal")) e.target.classList.remove("open");
 });
+/* Loads the full Paulino's service list (replaces the services currently saved) */
 $("seed").onclick = async () => {
-  try{ for (const [i, s] of STARTER.entries()) await db.collection("services").doc("s" + i).set({...s, img:"", sort:i}); toast("Starter services added"); }
-  catch(x){ toast("Could not add services."); }
+  if (S.svc.length && !confirm("This replaces your current services with the full Paulino's service list. Continue?")) return;
+  try{
+    const b = db.batch();
+    S.svc.filter(s => !/^s\d+$/.test(s.id) || +s.id.slice(1) >= STARTER.length).forEach(s => b.delete(db.collection("services").doc(s.id)));
+    STARTER.forEach((s, i) => b.set(db.collection("services").doc("s" + i), {...s, img:"", sort:i}));
+    await b.commit(); toast("Full service list loaded");
+  }catch(x){ toast("Could not load services."); }
 };
 document.addEventListener("keydown", e => { if (e.key === "Escape") document.querySelectorAll(".modal.open").forEach(m => m.classList.remove("open")); });
 
 $("mb").onclick = () => $("mb").setAttribute("aria-expanded", $("nav").classList.toggle("open"));
-$("nav").querySelectorAll("a").forEach(a => a.onclick = () => $("nav").classList.remove("open"));
+$("nav").querySelectorAll("a").forEach(a => a.onclick = () => { $("nav").classList.remove("open"); $("mb").setAttribute("aria-expanded", "false"); });
 $("yr").textContent = new Date().getFullYear();
+
+/* ---------- Hero slideshow ---------- */
+(function(){
+  const sl = [...document.querySelectorAll("#slides .slide")], dots = $("dots"), hero = $("hero");
+  const reduced = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  let i = 0, timer = null, x0 = null;
+  sl.forEach((_, n) => { const b = document.createElement("button"); b.setAttribute("aria-label", "Show slide " + (n + 1)); b.onclick = () => { go(n); play(); }; dots.appendChild(b); });
+  function go(n){ i = (n + sl.length) % sl.length; sl.forEach((s, k) => { s.classList.toggle("on", k === i); s.setAttribute("aria-hidden", k !== i); }); [...dots.children].forEach((d, k) => d.classList.toggle("on", k === i)); }
+  function play(){ clearInterval(timer); if (!reduced) timer = setInterval(() => go(i + 1), 6500); }
+  $("prev").onclick = () => { go(i - 1); play(); };
+  $("next").onclick = () => { go(i + 1); play(); };
+  hero.addEventListener("mouseenter", () => clearInterval(timer));
+  hero.addEventListener("mouseleave", play);
+  hero.addEventListener("focusin", () => clearInterval(timer));
+  hero.addEventListener("focusout", play);
+  hero.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, {passive:true});
+  hero.addEventListener("touchend", e => { if (x0 === null) return; const d = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(d) > 50){ go(i + (d < 0 ? 1 : -1)); play(); } });
+  go(0); play();
+})();
+
+/* ---------- Live background: slow drifting golden light ---------- */
+(function(){
+  if (matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  const cv = $("fx"), cx = cv.getContext("2d"), hero = $("hero");
+  let w = 0, h = 0, dp = 1, P = [], vis = true;
+  const mk = first => ({x:Math.random() * w, y:first ? Math.random() * h : h + 12, r:Math.random() * 2.2 + .7, v:Math.random() * .35 + .12, d:Math.random() * 6.28, s:Math.random() * .02 + .006, a:Math.random() * .5 + .3});
+  function init(){
+    dp = Math.min(devicePixelRatio || 1, 2); w = hero.clientWidth; h = hero.clientHeight;
+    cv.width = w * dp; cv.height = h * dp; cx.setTransform(dp, 0, 0, dp, 0, 0);
+    P = Array.from({length:Math.round(Math.min(70, w / 18))}, () => mk(true));
+  }
+  new IntersectionObserver(en => { vis = en[0].isIntersecting; }).observe(hero);
+  (function frame(){
+    requestAnimationFrame(frame);
+    if (!vis || document.hidden) return;
+    if (hero.clientWidth !== w || hero.clientHeight !== h) init();
+    if (!w) return;
+    cx.clearRect(0, 0, w, h);
+    for (const p of P){
+      p.d += p.s; p.x += Math.sin(p.d) * .35; p.y -= p.v;
+      if (p.y < -12){ Object.assign(p, mk(false), {x:Math.random() * w}); }
+      const al = p.a * (.55 + .45 * Math.sin(p.d * 3));
+      cx.fillStyle = `rgba(236,208,140,${al * .18})`; cx.beginPath(); cx.arc(p.x, p.y, p.r * 4, 0, 6.283); cx.fill();
+      cx.fillStyle = `rgba(250,226,160,${al})`; cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 6.283); cx.fill();
+    }
+  })();
+})();
+
 start();
 </script>
 </body>
