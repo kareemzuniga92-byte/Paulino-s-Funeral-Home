@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paulino Funeral Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--c1:#1f2a37;--c2:#a8884a;--bone:#f7f4ee;--ink:#242c33;--mute:#617078;--line:#e3ddd0;--serif:"Cormorant Garamond",Georgia,serif;--sans:"Karla",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font:400 1.05rem/1.7 var(--sans);color:var(--ink);background:var(--bone);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--c2);outline-offset:3px}
+.wrap{width:min(1100px,90%);margin-inline:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.1}
+.btn{display:inline-block;padding:12px 26px;border-radius:4px;background:var(--c2);color:#fff;border:2px solid var(--c2);font:700 1rem var(--sans);text-decoration:none;cursor:pointer;text-align:center}
+.btn:hover{filter:brightness(.92)}
+.btn.line{background:transparent;color:inherit;border-color:currentColor}
+.btn.sm{padding:7px 14px;font-size:.88rem}
+header{position:sticky;top:0;z-index:50;background:var(--c1);color:#fff;border-bottom:2px solid var(--c2)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:70px;gap:14px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font:700 1.35rem var(--serif);min-width:0}
+.brand img{width:48px;height:48px;object-fit:contain;flex:none}
+.mono{width:44px;height:44px;border:2px solid var(--c2);border-radius:50%;display:grid;place-items:center;flex:none;color:var(--c2)}
+nav{display:flex;gap:24px;align-items:center}
+nav a{color:#e8ebee;text-decoration:none;font-weight:500;font-size:.95rem}nav a:hover{color:var(--c2)}
+#mb{display:none;background:none;border:0;color:#fff;font-size:1.8rem;cursor:pointer}
+.hero{background:var(--c1);color:#fff;position:relative;overflow:hidden}
+.hero .bg{position:absolute;inset:0;background:center/cover;opacity:.38}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--c1) 30%,transparent 100%)}
+.hero .wrap{position:relative;z-index:1;padding:120px 0 130px;max-width:1100px}
+.hero h1{font-size:clamp(2.5rem,6vw,4.6rem);max-width:15ch;margin-bottom:22px}
+.hero p{font-size:1.2rem;color:#d6dce1;max-width:50ch;margin-bottom:34px}
+.hero .tag{font:italic 500 1.25rem var(--serif);color:var(--c2);margin-bottom:16px}
+.acts{display:flex;gap:12px;flex-wrap:wrap}
+section{padding:90px 0}
+.head{max-width:620px;margin-bottom:44px}
+.head h2{font-size:clamp(2rem,4vw,3rem);color:var(--c1);margin-bottom:12px}
+.head p{color:var(--mute)}
+.about .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:center}
+.about img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;border-bottom:6px solid var(--c2)}
+.about h2{font-size:clamp(2rem,3.6vw,2.8rem);color:var(--c1);margin-bottom:18px}
+.about p{color:#46545c;white-space:pre-line}
+#services{background:#fff;border-block:1px solid var(--line)}
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:34px}
+.s{border-left:3px solid var(--c2);padding:4px 0 4px 22px}
+.s img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:4px;margin-bottom:14px}
+.s h3{font-size:1.6rem;color:var(--c1);margin-bottom:6px}.s p{color:var(--mute);white-space:pre-line}
+.mem{display:grid;gap:22px}
+.m{display:grid;grid-template-columns:150px 1fr;gap:26px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:22px;align-items:start}
+.m .ph{width:150px;height:180px;border-radius:2px;object-fit:cover;background:#ebe6da}
+.m h3{font-size:1.9rem;color:var(--c1)}
+.m .d{font:italic 500 1.2rem var(--serif);color:var(--c2);margin-bottom:8px}
+.m p{color:#46545c;white-space:pre-line;margin-bottom:14px}
+.tools{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.empty{color:var(--mute);font-style:italic}
+.cta{background:var(--c1);color:#fff;text-align:center}
+.cta h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:14px}
+.cta p{color:#d6dce1;max-width:52ch;margin:0 auto 28px;white-space:pre-line}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:26px;margin-top:54px;text-align:left;border-top:1px solid rgba(255,255,255,.2);padding-top:34px}
+.info b{display:block;font:700 1.2rem var(--serif);color:var(--c2)}
+.info a{color:#fff}
+footer{background:#161e27;color:#9aa6af;text-align:center;padding:26px 0;font-size:.9rem}
+footer button{background:none;border:0;color:#9aa6af;text-decoration:underline;cursor:pointer;font:inherit;margin-left:10px}
+.adm{background:#fff3cf;color:#3a2e08;padding:9px 12px;display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;font-weight:700;font-size:.92rem}
+.adm button{background:var(--c1);color:#fff;border:0;border-radius:4px;padding:7px 14px;font:700 .85rem var(--sans);cursor:pointer}
+.modal{position:fixed;inset:0;z-index:100;background:rgba(10,16,22,.72);display:none;align-items:flex-start;justify-content:center;padding:16px;overflow:auto}
+.modal.open{display:flex}
+.box{background:#fff;width:min(620px,100%);border-radius:6px;padding:24px;margin:auto}
+.box h3{font-size:1.7rem;color:var(--c1);margin-bottom:4px}
+.box h4{font:700 1rem var(--sans);margin:22px 0 8px;padding-top:14px;border-top:1px solid var(--line);color:var(--c1)}
+.f{margin-bottom:12px}.f label{display:block;font-weight:700;font-size:.88rem;margin-bottom:4px}
+.f input,.f textarea{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:4px;font:1rem var(--sans)}
+.f textarea{min-height:84px;resize:vertical}.f input[type=color]{height:44px;padding:3px}
+.f img{max-height:90px;margin:6px 0;background:#eee}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.err{color:#b3202f;font-size:.9rem;min-height:1.3em}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,30px);background:var(--c1);color:#fff;padding:11px 22px;border-radius:4px;border:2px solid var(--c2);font-weight:700;z-index:200;opacity:0;transition:.3s;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:860px){.about .wrap{grid-template-columns:1fr;gap:34px}section{padding:60px 0}.hero .wrap{padding:80px 0 90px}
+#mb{display:block}nav{position:absolute;top:70px;left:0;right:0;background:var(--c1);flex-direction:column;align-items:flex-start;padding:18px 5%;display:none;border-bottom:2px solid var(--c2)}nav.open{display:flex}}
+@media(max-width:560px){.m{grid-template-columns:1fr}.m .ph{width:100%;height:240px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="#top"><img id="logoImg" alt="" hidden><span class="mono" id="mono"></span><span data-t="name"></span></a>
+  <nav id="nav"><a href="#about">About us</a><a href="#services">Services</a><a href="#memorials">Memorials</a><a href="#contact">Contact</a></nav>
+  <button id="mb" aria-label="Menu" aria-expanded="false">&#9776;</button>
+</div></header>
+<div class="adm" id="adm" hidden><span>Owner tools:</span><button id="editSite">Edit website</button><button id="addMem">Add memorial</button><button id="addSvc">Add service</button><button id="seed" hidden>Add starter services</button><button id="out">Log out</button></div>
+
+<main id="top">
+<div class="hero"><div class="bg" id="heroBg"></div><div class="wrap">
+  <p class="tag" data-t="tagline"></p><h1 data-t="heroTitle"></h1><p data-t="heroText"></p>
+  <div class="acts"><a class="btn" data-l="tel" href="#">Call us now</a><a class="btn line" data-l="wa" target="_blank" rel="noopener" href="#">Message on WhatsApp</a></div>
+</div></div>
+
+<section class="about" id="about"><div class="wrap">
+  <img id="aboutImg" alt="" hidden>
+  <div><h2 data-t="aboutTitle"></h2><p data-t="aboutText"></p></div>
+</div></section>
+
+<section id="services"><div class="wrap">
+  <div class="head"><h2 data-t="svcTitle"></h2><p data-t="svcText"></p></div>
+  <div class="svc" id="svcList"></div>
+</div></section>
+
+<section id="memorials"><div class="wrap">
+  <div class="head"><h2 data-t="memTitle"></h2><p data-t="memText"></p></div>
+  <div class="mem" id="memList"></div>
+</div></section>
+
+<section class="cta" id="contact"><div class="wrap">
+  <h2 data-t="ctaTitle"></h2><p data-t="ctaText"></p>
+  <div class="acts" style="justify-content:center"><a class="btn" data-l="tel" href="#">Call <span data-t="phone"></span></a><a class="btn line" data-l="wa" target="_blank" rel="noopener" href="#">WhatsApp</a></div>
+  <div class="info">
+    <div><b>Phone</b><a data-l="tel" href="#" data-t="phone"></a></div>
+    <div><b>Email</b><a data-l="mail" href="#" data-t="email"></a></div>
+    <div><b>Visit us</b><span data-t="address"></span></div>
+    <div><b>Hours</b><span data-t="hours"></span></div>
+  </div>
+</div></section>
+</main>
+<footer><div class="wrap">&copy; <span id="yr"></span> <span data-t="name"></span>. <span data-t="footer"></span><button id="staff">Staff login</button></div></footer>
+
+<div class="modal" id="lg"><div class="box"><h3>Staff login</h3>
+  <div class="f"><label for="em">Email</label><input id="em" type="email" autocomplete="username"></div>
+  <div class="f"><label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password"></div>
+  <p class="err" id="err" role="alert"></p>
+  <div class="row"><button class="btn" id="go">Log in</button><button class="btn line" data-x style="color:var(--c1)">Cancel</button></div></div></div>
+<div class="modal" id="ap"><div class="box" id="apc"></div></div>
+<div class="modal" id="ie"><div class="box" id="iec"></div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script>
+/* ====== PASTE YOUR NEW FIREBASE DETAILS HERE ====== */
+const CFG = {
+  apiKey:"AIzaSyDd979gUBoB564d72IxsVRorKuwBKqS7LM",
+  authDomain:"paulio-funeral-home.firebaseapp.com",
+  projectId:"paulio-funeral-home",
+  appId:"1:54146973511:web:02227804141c8946885662"
+};
+const OWNER = "kareem.zuniga92@gmail.com";   // the owner email you create in Firebase Authentication
+/* ================================================= */
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+/* Every piece of text on the site. [key, label, default, big box?] */
+const F = [
+["name","Funeral home name","Paulino Funeral Home"],
+["tagline","Tagline","Honoring lives with dignity and compassion"],
+["heroTitle","Main headline","We are here for your family, every step of the way"],
+["heroText","Main message","Caring, respectful funeral services. Call us day or night and we will guide you through everything with patience and kindness.",1],
+["aboutTitle","About heading","A family serving families"],
+["aboutText","About text","For years, our family has stood beside yours in the hardest moments. We believe every life deserves to be honored with care, and every family deserves time, support and answers.\n\nTell us what matters to you and we will arrange a service that reflects the person you love.",1],
+["svcTitle","Services heading","Our services"],
+["svcText","Services intro","Whatever you decide, we handle the details so you can be with your family.",1],
+["memTitle","Memorials heading","In loving memory"],
+["memText","Memorials intro","We remember those we have recently served. Please keep these families in your thoughts.",1],
+["ctaTitle","Contact heading","We are available day and night"],
+["ctaText","Contact message","Reach out any time. There is no pressure and no obligation. We will listen first.",1],
+["phone","Phone number","000-0000"],
+["whatsapp","WhatsApp number with country code (numbers only)","5010000000"],
+["email","Email","info@example.com"],
+["address","Address","Your street, Your town"],
+["hours","Opening hours","Open 24 hours, 7 days a week"],
+["footer","Footer message","With respect and compassion."]
+];
+const DEF = Object.fromEntries(F.map(f => [f[0], f[2]]));
+const STARTER = [
+ {title:"Funeral services", text:"Traditional or modern ceremonies planned around your wishes and your faith."},
+ {title:"Cremation", text:"Respectful cremation with options for a memorial service or a private farewell."},
+ {title:"Pre-planning", text:"Make your wishes known ahead of time and give your family peace of mind."},
+ {title:"Transport and support", text:"Dignified transport, paperwork help and guidance for families near or far."}
+];
+const S = {t:{}, img:{}, c:{}, svc:[], mem:[]};
+const T = k => (S.t[k] ?? DEF[k]);
+const shrink = (f, m, png) => new Promise((ok, no) => { const r = new FileReader(); r.onload = () => { const i = new Image(); i.onload = () => { const s = Math.min(1, m / Math.max(i.width, i.height)), c = document.createElement("canvas"); c.width = i.width * s; c.height = i.height * s; c.getContext("2d").drawImage(i, 0, 0, c.width, c.height); ok(c.toDataURL(png ? "image/png" : "image/jpeg", .78)); }; i.onerror = no; i.src = r.result; }; r.onerror = no; r.readAsDataURL(f); });
+let tt; const toast = m => { const t = $("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(tt); tt = setTimeout(() => t.classList.remove("show"), 2600); };
+
+let db = null, auth = null, admin = false, live = false;
+if (CFG.apiKey && CFG.projectId){ try{ firebase.initializeApp(CFG); db = firebase.firestore(); auth = firebase.auth(); live = true; }catch(e){} }
+
+/* ---------- Draw the page from the data ---------- */
+function paint(){
+  document.documentElement.style.setProperty("--c1", S.c.c1 || "#1f2a37");
+  document.documentElement.style.setProperty("--c2", S.c.c2 || "#a8884a");
+  document.title = T("name");
+  document.querySelectorAll("[data-t]").forEach(e => e.textContent = T(e.dataset.t));
+  const ph = T("phone").replace(/[^\d+]/g, "");
+  document.querySelectorAll("[data-l]").forEach(a => {
+    const k = a.dataset.l;
+    a.href = k === "tel" ? "tel:" + ph : k === "mail" ? "mailto:" + T("email") : "https://wa.me/" + T("whatsapp").replace(/\D/g, "") + "?text=" + encodeURIComponent("Hello, I need assistance from " + T("name") + ".");
+  });
+  const L = S.img.logo; $("logoImg").hidden = !L; $("mono").hidden = !!L; if (L) $("logoImg").src = L; $("mono").textContent = T("name").charAt(0);
+  $("heroBg").style.backgroundImage = S.img.hero ? `url(${S.img.hero})` : "none";
+  $("aboutImg").hidden = !S.img.about; if (S.img.about) $("aboutImg").src = S.img.about;
+  const tools = (c, id) => admin ? `<div class="tools"><button class="btn sm line" style="color:var(--c1)" data-ed="${c}:${id}">Edit</button><button class="btn sm line" style="color:#b3202f" data-del="${c}:${id}">Delete</button></div>` : "";
+  const real = S.svc.length > 0;
+  $("svcList").innerHTML = (real ? S.svc : STARTER.map((s, i) => ({...s, id:"d" + i}))).map(s =>
+    `<div class="s">${s.img ? `<img src="${s.img}" alt="${esc(s.title)}">` : ""}<h3>${esc(s.title)}</h3><p>${esc(s.text)}</p>${real ? tools("services", s.id) : ""}</div>`).join("");
+  $("memList").innerHTML = S.mem.map(m =>
+    `<article class="m">${m.img ? `<img class="ph" src="${m.img}" alt="${esc(m.title)}">` : `<div class="ph"></div>`}
+      <div><h3>${esc(m.title)}</h3><div class="d">${esc(m.sub)}</div><p>${esc(m.text)}</p>
+      <a class="btn sm" target="_blank" rel="noopener" href="https://wa.me/${T("whatsapp").replace(/\D/g, "")}?text=${encodeURIComponent("Condolences for the family of " + m.title)}">Send condolences</a>${tools("memorials", m.id)}</div></article>`).join("")
+    || `<p class="empty">No memorials are listed at this time.</p>`;
+  $("adm").hidden = !admin; $("seed").hidden = !(admin && !S.svc.length);
+}
+
+/* ---------- Live data ---------- */
+function start(){
+  if (!live){ paint(); return; }
+  db.collection("site").doc("main").onSnapshot(d => { const v = d.exists ? d.data() : {}; S.t = v.t || {}; S.c = v.c || {}; paint(); });
+  db.collection("site_images").onSnapshot(s => { S.img = {}; s.forEach(d => S.img[d.id] = d.data().data); paint(); });
+  const list = (col, key) => db.collection(col).onSnapshot(s => { S[key] = s.docs.map(d => ({id:d.id, ...d.data()})).sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0)); paint(); });
+  list("services", "svc"); list("memorials", "mem");
+  auth.onAuthStateChanged(u => { admin = !!u && !!OWNER && u.email.toLowerCase() === OWNER.toLowerCase(); paint(); });
+}
+
+/* ---------- Login ---------- */
+const openLogin = () => { if (!live) return toast("Add your Firebase details first"); $("lg").classList.add("open"); $("em").focus(); };
+$("staff").onclick = openLogin;
+if (location.hash === "#admin") setTimeout(openLogin, 600);
+$("go").onclick = async () => {
+  try{ await auth.signInWithEmailAndPassword($("em").value.trim(), $("pw").value); $("lg").classList.remove("open"); $("pw").value = ""; $("err").textContent = ""; toast("Welcome back"); }
+  catch(e){ $("err").textContent = "Email or password is not correct."; }
+};
+$("out").onclick = () => auth.signOut();
+
+/* ---------- Edit the whole website ---------- */
+$("editSite").onclick = () => {
+  const im = (k, lbl) => `<div class="f"><label for="im_${k}">${lbl}</label>${S.img[k] ? `<img src="${S.img[k]}" alt="">` : ""}<input id="im_${k}" type="file" accept="image/*" data-img="${k}"></div>`;
+  $("apc").innerHTML = `<h3>Edit website</h3><p style="color:var(--mute)">Changes go live for everyone when you press Save.</p>
+    <h4>Pictures (saved as soon as you choose them)</h4>${im("logo", "Logo")}${im("hero", "Top banner photo")}${im("about", "About us photo")}
+    <h4>Colors</h4><div class="f"><label for="c1">Main color (header, headings)</label><input id="c1" type="color" value="${S.c.c1 || "#1f2a37"}"></div>
+    <div class="f"><label for="c2">Accent color (buttons, details)</label><input id="c2" type="color" value="${S.c.c2 || "#a8884a"}"></div>
+    <h4>Words</h4>${F.map(f => `<div class="f"><label for="f_${f[0]}">${f[1]}</label>${f[3] ? `<textarea id="f_${f[0]}">${esc(T(f[0]))}</textarea>` : `<input id="f_${f[0]}" value="${esc(T(f[0]))}">`}</div>`).join("")}
+    <div class="row"><button class="btn" id="saveSite">Save changes</button><button class="btn line" data-x style="color:var(--c1)">Close</button></div>`;
+  $("ap").classList.add("open");
+};
+$("apc").addEventListener("change", async e => {
+  const k = e.target.dataset.img; if (!k || !e.target.files[0]) return;
+  try{ const data = await shrink(e.target.files[0], k === "logo" ? 400 : k === "hero" ? 1600 : 900, k === "logo");
+    await db.collection("site_images").doc(k).set({data}); toast("Picture saved"); $("editSite").click(); }
+  catch(x){ toast("Could not save that picture"); }
+});
+$("apc").addEventListener("click", async e => {
+  if (e.target.id !== "saveSite") return;
+  const t = {}; F.forEach(f => t[f[0]] = $("f_" + f[0]).value.trim());
+  try{ await db.collection("site").doc("main").set({t, c:{c1:$("c1").value, c2:$("c2").value}}); toast("Website updated"); $("ap").classList.remove("open"); }
+  catch(x){ toast("Could not save. Check your Firebase rules."); }
+});
+
+/* ---------- Add / edit / delete memorials and services ---------- */
+let cur = null, pic = null;
+function openItem(col, id){
+  const isM = col === "memorials", list = isM ? S.mem : S.svc, it = id ? list.find(x => x.id === id) : {};
+  cur = {col, id}; pic = null;
+  $("iec").innerHTML = `<h3>${id ? "Edit" : "Add"} ${isM ? "memorial" : "service"}</h3>
+    <div class="f"><label for="iPic">Photo${isM ? "" : " (optional)"}</label>${it.img ? `<img id="iPrev" src="${it.img}" alt="">` : `<img id="iPrev" alt="" hidden>`}<input id="iPic" type="file" accept="image/*"></div>
+    <div class="f"><label for="iT">${isM ? "Full name" : "Service name"}</label><input id="iT" maxlength="80" value="${esc(it.title)}"></div>
+    ${isM ? `<div class="f"><label for="iS">Dates (example: 1940 - 2026)</label><input id="iS" maxlength="60" value="${esc(it.sub)}"></div>` : ""}
+    <div class="f"><label for="iX">${isM ? "Tribute and service details (date, time, place)" : "Description"}</label><textarea id="iX" maxlength="900">${esc(it.text)}</textarea></div>
+    <div class="row"><button class="btn" id="iSave">Save</button><button class="btn line" data-x style="color:var(--c1)">Cancel</button></div>`;
+  $("ie").classList.add("open");
+}
+$("addMem").onclick = () => openItem("memorials"); $("addSvc").onclick = () => openItem("services");
+$("iec").addEventListener("change", async e => {
+  if (e.target.id !== "iPic" || !e.target.files[0]) return;
+  try{ pic = await shrink(e.target.files[0], 800); $("iPrev").src = pic; $("iPrev").hidden = false; } catch(x){ toast("That file is not a picture"); }
+});
+$("iec").addEventListener("click", async e => {
+  if (e.target.id !== "iSave") return;
+  const isM = cur.col === "memorials", title = $("iT").value.trim();
+  if (!title) return toast("Please enter a name");
+  const old = cur.id ? (isM ? S.mem : S.svc).find(x => x.id === cur.id) : null;
+  const data = {title, text:$("iX").value.trim(), img:pic || (old && old.img) || "", sort:old ? (old.sort ?? 0) : -Date.now()};
+  if (isM) data.sub = $("iS").value.trim();
+  try{ await db.collection(cur.col).doc(cur.id || "n" + Date.now()).set(data); $("ie").classList.remove("open"); toast("Saved"); }
+  catch(x){ toast("Could not save. Try a smaller picture."); }
+});
+document.addEventListener("click", async e => {
+  const ed = e.target.closest("[data-ed]"), de = e.target.closest("[data-del]");
+  if (ed && admin){ const [c, i] = ed.dataset.ed.split(":"); openItem(c, i); }
+  if (de && admin){ const [c, i] = de.dataset.del.split(":"); if (!confirm("Delete this? This cannot be undone.")) return;
+    try{ await db.collection(c).doc(i).delete(); toast("Deleted"); } catch(x){ toast("Could not delete."); } }
+  if (e.target.matches("[data-x]")) e.target.closest(".modal").classList.remove("open");
+  if (e.target.classList.contains("modal")) e.target.classList.remove("open");
+});
+$("seed").onclick = async () => {
+  try{ for (const [i, s] of STARTER.entries()) await db.collection("services").doc("s" + i).set({...s, img:"", sort:i}); toast("Starter services added"); }
+  catch(x){ toast("Could not add services."); }
+};
+document.addEventListener("keydown", e => { if (e.key === "Escape") document.querySelectorAll(".modal.open").forEach(m => m.classList.remove("open")); });
+
+$("mb").onclick = () => $("mb").setAttribute("aria-expanded", $("nav").classList.toggle("open"));
+$("nav").querySelectorAll("a").forEach(a => a.onclick = () => $("nav").classList.remove("open"));
+$("yr").textContent = new Date().getFullYear();
+start();
+</script>
+</body>
+</html>
